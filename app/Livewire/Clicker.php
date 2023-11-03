@@ -8,16 +8,20 @@ use App\Models\User;
 class Clicker extends Component
 {
 
-    public $username = "testuser";
-    
+public $first_name;
+public $last_name;
+public $phonenumber;
+public $email;
+public $password;
+
     public function createNewUser()
     {
        User::create([
-        'first_name' => 'test User',
-        'last_name' => 'test User',
-        'password' => 'testUser',
-        'phonenumber' => 'test User',
-        'email' => "test@test.com"
+        'first_name' => $this->first_name,
+        'last_name' => $this->last_name,
+        'password' => $this->password,
+        'phonenumber' => $this->phonenumber,
+        'email' => $this->email
        ]);
     }
 
@@ -30,11 +34,9 @@ class Clicker extends Component
 
     public function render()
     {
-        $title = "Test";
         $users = User::all();
 
         return view('livewire.clicker', [
-            'title' => $title,
             'users' => $users
         ]);
     }
